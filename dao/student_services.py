@@ -1,6 +1,6 @@
 # Creating all the student related services(CRUD) at same place (encapsulation)
 
-class student_services:
+class Student_services:
 
     def EnrollInCourse(self, enrollments):
         pass
@@ -8,20 +8,20 @@ class student_services:
     def UpdateStudentInfo(self, Student):
         pass
 
-    def makePayment(self, Payment):
+    def MakePayment(self, Payment):
         pass
 
-    def displayStudentInfo(self, studentID):
+    def DisplayStudentInfo(self, student_id):
         pass
 
-    def getEnrolledCourses(self, studentID):
+    def GetEnrolledCourses(self, student_id):
         pass
 
-    def getPaymentHistory(self, studentID):
+    def GetPaymentHistory(self, student_id):
         pass
 
-    def createStudent(self, Student):
+    def CreateStudent(self, Student):
         pass
 
-    def getStudent(self, studID):
+    def GetStudent(self, student_id):
         pass

@@ -1,6 +1,6 @@
 # Creating all the course related services(CRUD) at same place (encapsulation)
 
-class course_services:
+class Course_services:
 
     def AssignTeacher(self,course,teacher_id):
         pass
@@ -11,10 +11,10 @@ class course_services:
     def DisplayCourseInfo(self):
         pass
 
-    def GetEnrollments(self, courseID):
+    def GetEnrollments(self, course_id):
        pass
 
-    def GetTeacher(self, courseID):
+    def GetTeacher(self, course_id):
        pass 
 
     def CreateCourse(self, Course):

@@ -2,8 +2,8 @@
 
 class Enrollment_services:
 
-    def getStudent(self,enrollment):
+    def GetStudent(self,enrollment):
         pass
 
-    def getCourse(self,enrollment):
+    def GetCourse(self,enrollment):
         pass
