@@ -2,7 +2,7 @@
 
 class SIS:
 
-    def EnrollStudent(self, student, course):
+    def EnrollStudentInCourse(self, student, course):
         pass
 
     def AssignTeacherToCourse(self, course, teacher):
@@ -15,4 +15,6 @@ class SIS:
         pass
 
     def GeneratePaymentReport(self, student):
+        pass
+    def CalculateCourseStatistics(self,course):
         pass
