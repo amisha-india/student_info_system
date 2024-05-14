@@ -1,6 +1,7 @@
 # Creating all the teacher related services(CRUD) at same place (encapsulation)
 
-class Teacher_services:
+from util.myDBconnection import DBConnection
+class Teacher_services(DBConnection):
 
     def UpdateTeacherInfo(self, teacher_id):
         pass

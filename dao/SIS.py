@@ -1,6 +1,7 @@
 # Creating all the teacher related services(CRUD) at same place (encapsulation)
 
-class SIS:
+from util.myDBconnection import DBConnection
+class SIS(DBConnection):
 
     def EnrollStudentInCourse(self, student, course):
         pass

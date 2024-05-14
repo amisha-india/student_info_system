@@ -1,6 +1,7 @@
 # Creating all the student related services(CRUD) at same place (encapsulation)
 
-class Student_services:
+from util.myDBconnection import DBConnection
+class Student_services(DBConnection):
 
     def EnrollInCourse(self, enrollments):
         pass

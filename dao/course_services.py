@@ -1,6 +1,7 @@
 # Creating all the course related services(CRUD) at same place (encapsulation)
 
-class Course_services:
+from util.myDBconnection import DBConnection
+class Course_services(DBConnection):
 
     def AssignTeacher(self,course,teacher_id):
         pass

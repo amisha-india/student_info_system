@@ -1,5 +1,7 @@
 #Creating all the payment related services(CRUD) at same place (encapsulation)
-class Payment_services:
+
+from util.myDBconnection import DBConnection
+class Payment_services(DBConnection):
     
     def GetStudent(self, payment_id):
         pass
