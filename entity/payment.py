@@ -1,5 +1,6 @@
 # Payment class with its attributes
 
+from datetime import datetime
 class Payment:
 
     def __init__(self, payment_id, student_id, amount, payment_date):

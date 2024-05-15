@@ -8,3 +8,4 @@ class Course:
         self.course_name = course_name
         self.course_code = course_code
         self.instructor_name = instructor_name
+        self.enrollments = None

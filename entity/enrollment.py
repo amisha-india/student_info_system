@@ -1,5 +1,6 @@
 # Enrollment class creation with its attributes
 
+from datetime import datetime
 class Enrollment:
 
     def __init__(self, enrollment_id, student_id, course_id, enrollment_date):
