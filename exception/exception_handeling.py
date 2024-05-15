@@ -1,31 +1,52 @@
 # Handeling all the exception with certain messages
 
-class DuplicateEnrollmentException:
-    pass
+class DuplicateEnrollmentException(Exception):
+    def __init__(self, message):
+        self.message = message
+        super().__init__(self.message)
 
-class CourseNotFoundException:
-    pass
+class CourseNotFoundException(Exception):
+    def __init__(self,message):
+        self.message = message
+        super().__init__(self.message)
 
-class StudentNotFoundException:
-    pass
+class StudentNotFoundException(Exception):
+    def __init__(self,message):
+        self.message = message
+        super().__init__(self.message)
 
-class TeacherNotFoundException:
-    pass
+class TeacherNotFoundException(Exception):
+     def __init__(self,message):
+        self.message = message
+        super().__init__(self.message)
+    
+class PaymentValidationException(Exception):
+    def __init__(self,message):
+        self.message = message
+        super().__init__(self.message)
+    
+class InvalidStudentDataException(Exception):
+    def __init__(self,message):
+        self.message = message
+        super().__init__(self.message)
 
-class PaymentValidationException:
-    pass
+class InvalidCourseDataException(Exception):
+    def __init__(self,message):
+        self.message = message
+        super().__init__(self.message)
 
-class InvalidStudentDataException:
-    pass
 
-class InvalidCourseDataException:
-    pass
+class InvalidEnrollmentDataException(Exception):
+    def __init__(self,message):
+        self.message = message
+        super().__init__(self.message)
+        
+class InvalidEnrollmentDataException(Exception):
+    def __init__(self,message):
+        self.message = message
+        super().__init__(self.message)
 
-class InvalidEnrollmentDataException:
-    pass
-
-class InvalidEnrollmentDataException:
-    pass
-
-class InsufficientFundsException:
-    pass
+class InsufficientFundsException(Exception):
+    def __init__(self,message):
+        self.message = message
+        super().__init__(self.message)
