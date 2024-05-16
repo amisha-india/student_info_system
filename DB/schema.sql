@@ -19,7 +19,8 @@ CREATE TABLE Teacher(
 -- Courses table
 CREATE TABLE Courses (
  [course_id] INT not null Primary Key ,
- [course_name] varchar(20) ,
+ [course_name] varchar(225) ,
+ [course_code] varchar(100),
  [credits] INT ,
  [teacher_id] INT Foreign Key References Teacher(Teacher_id)
  );

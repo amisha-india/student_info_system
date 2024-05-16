@@ -28,7 +28,7 @@ VALUES
 (11,'Rakul','Kushar','rakul.kushar@example.com');
 
 --Inserting into Courses table
-INSERT INTO Courses (course_id, course_name, credits, teacher_id)
+INSERT INTO Courses (course_id, course_name,course_code, credits, teacher_id)
 VALUES
 (1, 'Mathematics 101', 3, 1),
 (2, 'Physics 101', 4, 2),
