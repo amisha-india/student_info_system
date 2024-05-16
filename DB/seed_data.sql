@@ -30,16 +30,16 @@ VALUES
 --Inserting into Courses table
 INSERT INTO Courses (course_id, course_name,course_code, credits, teacher_id)
 VALUES
-(1, 'Mathematics 101', 3, 1),
-(2, 'Physics 101', 4, 2),
-(3, 'Chemistry 101', 4, 3),
-(4, 'Biology 101', 3, 4),
-(5, 'English 101', 3, 5),
-(6, 'History 101', 3, 6),
-(7, 'Geography 101', 3, 7),
-(8, 'Art 101', 2, 8),
-(9, 'Music 101', 2, 9),
-(10, 'Computer Science 101', 3, 11);
+(1, 'Mathematics 101','SC123', 3, 1),
+(2, 'Physics 101', 4,'BN123',2),
+(3, 'Chemistry 101','JN123',4, 3),
+(4, 'Biology 101','JN123',3, 4),
+(5, 'English 101','HJ123', 3, 5),
+(6, 'History 101','GH123',3, 6),
+(7, 'Geography 101','VF123', 3, 7),
+(8, 'Art 101','ED123', 2, 8),
+(9, 'Music 101','SG123' ,2, 9),
+(10, 'Computer Science 101','DS123' ,3, 11);
 
 --Inserting into Enrollment table
 INSERT INTO Enrollments (enrollment_id, student_id, course_id, enrollment_date)
