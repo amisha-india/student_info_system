@@ -2,11 +2,11 @@
 
 class Course:
 
-    def __init__(self, course_id, course_name, credit, teacher_id):
+    def __init__(self, course_id, course_name, credits, teacher_id):
 
         self.course_id = course_id
         self.course_name = course_name
-        self.credit = credit
+        self.credits = credits
         self.teacher_id = teacher_id
 
         self.enrollments = []
