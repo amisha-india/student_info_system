@@ -29,5 +29,5 @@ class Course:
     def set_course_name(self, course_name):
         self.__course_name = course_name
 
-    def set_course_code(self):
+    def set_course_code(self,course_code):
         self.__course_code
