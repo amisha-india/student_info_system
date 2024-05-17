@@ -1,0 +1,6 @@
+from .course_services import Course_management
+from .enrollment_services import Enrollment_management
+from .payment_services import Payment_management
+from .student_services import Student_management
+from .teacher_services import Teacher_management
+from .sis_services import SIS_management
