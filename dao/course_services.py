@@ -1,4 +1,3 @@
-from tabulate import tabulate
 from util import *
 from myexception.exception_handeling import *
 from entity.course import Course
