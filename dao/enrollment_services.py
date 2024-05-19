@@ -14,7 +14,6 @@ class Enrollment_management:
                                 , (enrollment_id))
             print(self.cursor.fetchall())
         except Exception as e:
-            self.connection.rollback()
             raise InvalidEnrollmentDataException("Error: In retrieving the student  data".format(str(e)))
 
     #Getting course info                                             
@@ -25,6 +24,5 @@ class Enrollment_management:
                                 , (enrollment_id))
             print((self.cursor.fetchall()))
         except Exception as e:
-            self.connection.rollback()
             raise InvalidEnrollmentDataException("Error: In retrieving the course data".format(str(e)))
     

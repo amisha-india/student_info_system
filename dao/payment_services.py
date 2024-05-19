@@ -17,7 +17,6 @@ class Payment_management:
             )
             print(self.cursor.fetchall())
         except Exception as e:
-            self.connection.rollback()
             raise PaymentValidationException(
                 "Error: In retrieve the data".format(str(e))
             )
@@ -31,7 +30,6 @@ class Payment_management:
             )
             print(self.cursor.fetchall())
         except Exception as e:
-            self.connection.rollback()
             raise PaymentValidationException(
                 "Error: In retrieving the data".format(str(e))
             )
@@ -46,5 +44,4 @@ class Payment_management:
             )
             print(self.cursor.fetchall())
         except Exception as e:
-            self.connection.rollback()
             raise PaymentValidationException("Error: In retrieving data".format(str(e)))

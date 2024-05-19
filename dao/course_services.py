@@ -17,8 +17,7 @@ class Course_management():
                                 , (teahcer_id, course_id))
             self.connection.commit()
         except Exception as e:
-            self.connection.rollback()
-        raise StudentNotFoundException(f"Error the student not found with given :{course_id}")
+            raise StudentNotFoundException(f"Error the student not found with given :{course_id}")
     
     #update course info based on course_id
     def update_course_info(self):
@@ -34,7 +33,6 @@ class Course_management():
             self.conn.commit()
             print("course updated successfully!")
         except Exception as e:
-            self.connection.rollback()
             raise  CourseNotFoundException(f"No such course found with ID: {course_id}")
 
     #Dispaying the course information based on course_id
@@ -103,7 +101,6 @@ class Course_management():
                                 , (course_id))
             print(self.cursor.fetchall())
         except Exception as e:
-            self.connection.rollback()
             raise CourseNotFoundException(f"No such course found with ID: {course_id}")
       
 

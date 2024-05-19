@@ -25,7 +25,6 @@ class SIS_management():
             self.conn.commit()
             print("enrollment added successfully!")
         except Exception as e:
-            self.connection.rollback()
             raise StudentNotFoundException(f"No such data found with ID: {enrollment_id}")
         
     def assign_teacher(self):
@@ -36,8 +35,7 @@ class SIS_management():
                                 , (teahcer_id, course_id))
             self.connection.commit()
         except Exception as e:
-            self.connection.rollback()
-        raise StudentNotFoundException(f"Error the student not found with given :{course_id}")
+            raise StudentNotFoundException(f"Error the student not found with given :{course_id}")
 
     #Get payment record
     def get_payment_amount(self):
@@ -49,7 +47,6 @@ class SIS_management():
             )
             print(self.cursor.fetchall())
         except Exception as e:
-            self.connection.rollback()
             raise PaymentValidationException(
                 "Error: In retrieve the data".format(str(e))
             )
@@ -91,8 +88,14 @@ class SIS_management():
                                 , (student_id))
             print(self.cursor.fetchall())
         except Exception as e:
-            self.connection.rollback()
             raise StudentNotFoundException("Error: in reteriving the student ".format(str(e)))
+        
+    def calculate_course_statistics(self):
+        course_id = input("Enter Course ID: ")
+        course = Course(course_id)
+        stats =SIS_management.calculate_course_statistics(course)
+        print(f"Statistics for course {course_id}:")
+        print(stats)
         
              
 

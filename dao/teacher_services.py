@@ -17,7 +17,6 @@ class Teacher_management():
             print(self.cursor.fetchall())
 
         except Exception as e:
-            self.connection.rollback()
             raise TeacherNotFoundException("Error: In retrieving the teacher data".format(str(e)))  
         
     #Getting the assigned cources to teacher
@@ -29,7 +28,6 @@ class Teacher_management():
             print(self.cursor.fetchall())
 
         except Exception as e:
-            self.connection.rollback()
             raise TeacherNotFoundException("Error: In retrieving the data ".format(str(e))) 
         
     #Updating the teacher 
@@ -46,6 +44,5 @@ class Teacher_management():
             print("teacher updated successfully!")
 
         except Exception as e:
-            self.connection.rollback()
             raise TeacherNotFoundException("Erroe : Teacher not found".format(str(e)))   
         

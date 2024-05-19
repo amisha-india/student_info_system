@@ -92,7 +92,6 @@ class Student_management:
             self.conn.commit()
             print("enrollment added successfully!")
         except Exception as e:
-            self.connection.rollback()
             raise StudentNotFoundException(f"No such data found with ID: {enrollment_id}")
         
     #Making payment for the student    
@@ -103,7 +102,6 @@ class Student_management:
             self.cursor.execute("INSERT INTO payments VALUES (?, ?, ?, GETDATE())", (payment_id[0] + 1, student_id, amount))
             self.connection.commit()
         except Exception as e:
-            self.connection.rollback()
             raise StudentNotFoundException("Error: {}".format(str(e)))
         
     #display student info
@@ -138,7 +136,6 @@ class Student_management:
                                 , (student_id))
             print((self.cursor.fetchall()))
         except Exception as e:
-            self.connection.rollback()
             raise StudentNotFoundException("Error student not found".format(str(e)))
         
     #Getting payment History
@@ -149,7 +146,6 @@ class Student_management:
                                 , (student_id))
             print(self.cursor.fetchall())
         except Exception as e:
-            self.connection.rollback()
             raise StudentNotFoundException("Error: in reteriving the student ".format(str(e)))
     
     #Getting the enrollement
