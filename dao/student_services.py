@@ -95,8 +95,10 @@ class Student_management:
             raise StudentNotFoundException(f"No such data found with ID: {enrollment_id}")
         
     #Making payment for the student    
-    def make_payment(self,student_id,amount):
+    def make_payment(self):
         try:
+            student_id = int(input("Enter student ID:"))
+            amount = input("Enter amount:")
             self.cursor.execute("select payment_id from payments order by payment_id desc offset 0 rows fetch next 1 rows only")
             payment_id=self.cursor.fetchone()
             self.cursor.execute("INSERT INTO payments VALUES (?, ?, ?, GETDATE())", (payment_id[0] + 1, student_id, amount))

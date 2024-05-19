@@ -35,7 +35,7 @@ class Payment_management:
             )
 
     # Getting student based on payment id
-    def get_student(self, payment_id):
+    def get_student(self):
         try:
             payment_id = int(input("Enter the payment id:"))
             self.cursor.execute(
