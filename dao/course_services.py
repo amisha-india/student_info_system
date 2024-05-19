@@ -71,7 +71,7 @@ class Course_management():
             print("Finding for enrollments with ID:", course_id)
 
             stmt = self.conn.cursor()
-            stmt.execute("SELECT * FROM enrollment WHERE course_id = ?", (course_id,))
+            stmt.execute("SELECT * FROM enrollments WHERE course_id = ?", (course_id,))
             print("SQL query executed successfully")
 
             row = stmt.fetchone()
