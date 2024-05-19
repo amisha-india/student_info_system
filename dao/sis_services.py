@@ -35,6 +35,7 @@ class SIS_management():
             teahcer_id = int(input("Enter the teacher id:"))
             stmt.execute("UPDATE Courses SET teacher_id=? WHERE course_id = ?"
                                 , (teahcer_id, course_id))
+            print("Teacher assigned")
             self.conn.commit()
         except Exception as e:
             raise StudentNotFoundException(f"Error the student not found with given :{course_id}")
@@ -46,7 +47,7 @@ class SIS_management():
         try:
             student_id = int(input("Enter the student id:"))
             stmt.execute(
-                "select amount from Payments  inner join students on Payments.student_id=students.student_id where students.student_id=?;",
+                "select amount , student_id ,payment_date from Payments  inner join students on Payments.student_id=students.student_id where students.student_id=?;",
                 (student_id),
             )
             print(stmt.fetchall())
@@ -62,7 +63,7 @@ class SIS_management():
             print("Finding for enrollments with ID:", course_id)
 
             stmt = self.conn.cursor()
-            stmt.execute("SELECT * FROM enrollment WHERE course_id = ?", (course_id,))
+            stmt.execute("SELECT * FROM enrollments WHERE course_id = ?", (course_id,))
             print("SQL query executed successfully")
 
             row = stmt.fetchone()

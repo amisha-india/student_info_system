@@ -86,7 +86,7 @@ class Course_management():
                 print(f"Enrollment Date: {enrollment_date}")
                 print("Enrollment details retrieved successfully!")
             else:
-                print("No course found with ID:", enrollment_id)
+                print("No course found ")
                 return None
             
         except CourseNotFoundException as e:

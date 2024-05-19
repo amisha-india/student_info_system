@@ -14,7 +14,7 @@ class Enrollment_management:
             enrollment_id = int(input("Enter the enrollment id:"))
             stmt.execute("select first_name,last_name,course_id from students inner join enrollments on students.student_id=enrollments.student_id where enrollment_id=?"
                                 , (enrollment_id))
-            print(self.cursor.fetchall())
+            print(stmt.fetchall())
         except Exception as e:
             raise InvalidEnrollmentDataException("Error: In retrieving the student  data".format(str(e)))
 

@@ -30,7 +30,7 @@ class Payment_management:
         try:
             payment_id = int(input("Enter the payment id:"))
             stmt.execute(
-                "select date from Payments where payment_id=?;", (payment_id)
+                "select payment_date from Payments where payment_id=?;", (payment_id)
             )
             print(stmt.fetchall())
         except Exception as e:
