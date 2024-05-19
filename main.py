@@ -140,9 +140,8 @@ while True:
                     print("3. Record Payment")
                     print("4. Generate Enrollment Report")
                     print("5. Generate Payment Report")
-                    print("6. Calculate Course Statistics")
-                    print("7. Back to Main Menu")
-                    sis_choice = input("Enter your choice (1-7): ")
+                    print("6. Back to Main Menu")
+                    sis_choice = input("Enter your choice (1-6): ")
                     if sis_choice == '1':
                         sis.enroll_in_course()
                     elif sis_choice == '2':
@@ -154,14 +153,12 @@ while True:
                     elif sis_choice == '5':
                         sis.get_payment_history()
                     elif sis_choice == '6':
-                        sis.calculate_course_statistics()
-                    elif sis_choice == '7':
                         break
                     else:
                         print("Invalid choice. Please try again.")
         
             elif choice == '7':
-                print("Exiting the program!")
+                print("Please visit again..!!")
                 break
             else:
                 print("Invalid choice. Please enter a number between 1 and 7.")
