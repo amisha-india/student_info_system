@@ -10,17 +10,20 @@ class Course_management():
 
     #Assign teacher to course based on course_id
     def assign_teacher(self):
+        stmt = self.conn.cursor()
+
         try:
             course_id = int(input("Enter the course id:"))
             teahcer_id = int(input("Enter the teacher id:"))
-            self.cursor.execute("UPDATE Courses SET teacher_id=? WHERE course_id = ?"
+            stmt.execute("UPDATE Courses SET teacher_id=? WHERE course_id = ?"
                                 , (teahcer_id, course_id))
-            self.connection.commit()
+            self.conn.commit()
         except Exception as e:
             raise StudentNotFoundException(f"Error the student not found with given :{course_id}")
     
     #update course info based on course_id
     def update_course_info(self):
+
         try:
             course_id = int(input("Enter course_id :"))
             course_name = input("Enter course name :")

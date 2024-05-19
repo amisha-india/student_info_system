@@ -10,22 +10,26 @@ class Teacher_management():
 
     #Displaying teacher info
     def display_teacher_info(self):
+        stmt = self.conn.cursor()
+
         try:
             teacher_id = int(input("Enter the teacher id:"))
-            self.cursor.execute("select * from teacher  where teacher_id=?"
+            stmt.execute("select * from teacher  where teacher_id=?"
                                 , (teacher_id))
-            print(self.cursor.fetchall())
+            print(stmt.fetchall())
 
         except Exception as e:
             raise TeacherNotFoundException("Error: In retrieving the teacher data".format(str(e)))  
         
     #Getting the assigned cources to teacher
     def get_assigned_courses(self):
+        stmt = self.conn.cursor()
+
         try:
             teacher_id = int(input("Enter the teacher id:"))
-            self.cursor.execute("select first_name,last_name,course_name from teacher inner join courses on courses.teacher_id=teacher.teacher_id where courses.teacher_id=?"
+            stmt.execute("select first_name,last_name,course_name from teacher inner join courses on courses.teacher_id=teacher.teacher_id where courses.teacher_id=?"
                                 , (teacher_id))
-            print(self.cursor.fetchall())
+            print(stmt.fetchall())
 
         except Exception as e:
             raise TeacherNotFoundException("Error: In retrieving the data ".format(str(e))) 

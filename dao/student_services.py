@@ -96,13 +96,15 @@ class Student_management:
         
     #Making payment for the student    
     def make_payment(self):
+        stmt = self.conn.cursor()
+
         try:
             student_id = int(input("Enter student ID:"))
             amount = input("Enter amount:")
-            self.cursor.execute("select payment_id from payments order by payment_id desc offset 0 rows fetch next 1 rows only")
-            payment_id=self.cursor.fetchone()
-            self.cursor.execute("INSERT INTO payments VALUES (?, ?, ?, GETDATE())", (payment_id[0] + 1, student_id, amount))
-            self.connection.commit()
+            stmt.execute("select payment_id from payments order by payment_id desc offset 0 rows fetch next 1 rows only")
+            payment_id=stmt.fetchone()
+            stmt.execute("INSERT INTO payments VALUES (?, ?, ?, GETDATE())", (payment_id[0] + 1, student_id, amount))
+            self.conn.commit()
         except Exception as e:
             raise StudentNotFoundException("Error: {}".format(str(e)))
         
@@ -132,21 +134,25 @@ class Student_management:
         
     #Getting the enrolled courses
     def get_enrolled_courses(self):
+        stmt = self.conn.cursor()
+
         try:
             student_id = int(input("Enter the student id:"))
-            self.cursor.execute("select students.student_id,first_name,last_name,course_name from students inner join enrollments  on students.student_id=enrollments.student_id inner join courses on courses.course_id=enrollments.course_id where students.student_id=?"
+            stmt.execute("select students.student_id,first_name,last_name,course_name from students inner join enrollments  on students.student_id=enrollments.student_id inner join courses on courses.course_id=enrollments.course_id where students.student_id=?"
                                 , (student_id))
-            print((self.cursor.fetchall()))
+            print((stmt.fetchall()))
         except Exception as e:
             raise StudentNotFoundException("Error student not found".format(str(e)))
         
     #Getting payment History
     def get_payment_history(self):
+        stmt = self.conn.cursor()
+
         try:
             student_id = int(input("Enter the student id:"))
-            self.cursor.execute("Select * from payments where student_id=?"
+            stmt.execute("Select * from payments where student_id=?"
                                 , (student_id))
-            print(self.cursor.fetchall())
+            print(stmt.fetchall())
         except Exception as e:
             raise StudentNotFoundException("Error: in reteriving the student ".format(str(e)))
     

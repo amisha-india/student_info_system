@@ -28,24 +28,28 @@ class SIS_management():
             raise StudentNotFoundException(f"No such data found with ID: {enrollment_id}")
         
     def assign_teacher(self):
+        stmt = self.conn.cursor()
+
         try:
             course_id = int(input("Enter the course id:"))
             teahcer_id = int(input("Enter the teacher id:"))
-            self.cursor.execute("UPDATE Courses SET teacher_id=? WHERE course_id = ?"
+            stmt.execute("UPDATE Courses SET teacher_id=? WHERE course_id = ?"
                                 , (teahcer_id, course_id))
-            self.connection.commit()
+            self.conn.commit()
         except Exception as e:
             raise StudentNotFoundException(f"Error the student not found with given :{course_id}")
 
     #Get payment record
     def get_payment_amount(self):
+        stmt = self.conn.cursor()
+
         try:
             student_id = int(input("Enter the student id:"))
-            self.cursor.execute(
+            stmt.execute(
                 "select amount from Payments  inner join students on Payments.student_id=students.student_id where students.student_id=?;",
                 (student_id),
             )
-            print(self.cursor.fetchall())
+            print(stmt.fetchall())
         except Exception as e:
             raise PaymentValidationException(
                 "Error: In retrieve the data".format(str(e))
@@ -82,11 +86,13 @@ class SIS_management():
         
     #generate payment report
     def get_payment_history(self):
+        stmt = self.conn.cursor()
+
         try:
             student_id = int(input("Enter the student id:"))
-            self.cursor.execute("Select * from payments where student_id=?"
+            stmt.execute("Select * from payments where student_id=?"
                                 , (student_id))
-            print(self.cursor.fetchall())
+            print(stmt.fetchall())
         except Exception as e:
             raise StudentNotFoundException("Error: in reteriving the student ".format(str(e)))
         
