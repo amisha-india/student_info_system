@@ -98,11 +98,12 @@ class Course_management():
 
     #Getting Teacher info based on course id
     def get_teacher(self):
+        stmt = self.conn.cursor
         try:
             course_id = int(input("Enter course id :"))
-            self.cursor.execute("select first_name,last_name,course_name from teacher inner join courses on courses.teacher_id=teacher.teacher_id where course_id=?"
+            stmt.execute("select first_name,last_name,course_name from teacher inner join courses on courses.teacher_id=teacher.teacher_id where course_id=?"
                                 , (course_id))
-            print(self.cursor.fetchall())
+            print(stmt.fetchall())
         except Exception as e:
             raise CourseNotFoundException(f"No such course found with ID: {course_id}")
       
