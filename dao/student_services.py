@@ -101,10 +101,12 @@ class Student_management:
         try:
             student_id = int(input("Enter student ID:"))
             amount = input("Enter amount:")
+            payment_date = input("Enter the date:")
             stmt.execute("select payment_id from payments order by payment_id desc offset 0 rows fetch next 1 rows only")
             payment_id=stmt.fetchone()
-            stmt.execute("INSERT INTO payments VALUES (?, ?, ?, GETDATE())", (payment_id[0] + 1, student_id, amount))
+            stmt.execute("INSERT INTO payments VALUES (?, ?, ?,?)", (payment_id[0] + 1, student_id, amount,payment_date))
             self.conn.commit()
+            print("Payment done!!")
         except Exception as e:
             raise StudentNotFoundException("Error: {}".format(str(e)))
         

@@ -11,10 +11,11 @@ class Enrollment_management:
         stmt = self.conn.cursor()
 
         try:
-            enrollment_id = int(input("Enter the enrollment id:"))
+            course_id = int(input("Enter the course id:"))
             stmt.execute("select first_name,last_name,course_id from students inner join enrollments on students.student_id=enrollments.student_id where enrollment_id=?"
-                                , (enrollment_id))
+                                , (course_id))
             print(stmt.fetchall())
+            print(f"Enrolled student/students for spicified course:{course_id}")
         except Exception as e:
             raise InvalidEnrollmentDataException("Error: In retrieving the student  data".format(str(e)))
 

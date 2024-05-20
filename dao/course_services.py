@@ -15,9 +15,11 @@ class Course_management():
         try:
             course_id = int(input("Enter the course id:"))
             teahcer_id = int(input("Enter the teacher id:"))
-            stmt.execute("UPDATE Courses SET teacher_id=? WHERE course_id = ?"
-                                , (teahcer_id, course_id))
+            course_code = input("Enter the course code:")
+            stmt.execute("UPDATE Courses SET teacher_id=?,course_code=? WHERE course_id = ?"
+                                , (teahcer_id,course_code, course_id))
             self.conn.commit()
+            print("Course assigned successfully.")
         except Exception as e:
             raise StudentNotFoundException(f"Error the student not found with given :{course_id}")
     
@@ -67,6 +69,36 @@ class Course_management():
             print("Error in retrieving course:", e)
             return None
 
+    #Getting the course by course code
+    def display_course_info_by_code(self):
+        try:
+            course_code = (input("Enter course_code: "))
+            print("Finding for course with code:", course_code)
+
+            stmt = self.conn.cursor()
+            stmt.execute("SELECT * FROM courses WHERE course_code = ?", (course_code,))
+            print("SQL query executed successfully")
+
+            row = stmt.fetchone()
+            if row:
+                course_id, course_name,course_code, credits,teacher_id =row
+                print(f"Course ID: {course_id}")
+                print(f"Course Name: {course_name}")
+                print(f"Course Code: {course_code}")
+                print(f"credits: {credits}")
+                print(f"teacher_id: {teacher_id}")
+                print("course details retrieved successfully!")
+            else:
+                raise CourseNotFoundException(f"No course found with ID: {course_code}")
+            
+        except CourseNotFoundException as e:
+            raise e
+
+        except Exception as e:
+            print("Error in retrieving course:", e)
+            return None
+
+
     #Getting the enrollments based on course_id
     def get_enrollments(self):
         try:
@@ -75,7 +107,7 @@ class Course_management():
 
             stmt = self.conn.cursor()
             stmt.execute("SELECT * FROM enrollments WHERE course_id = ?", (course_id,))
-            print("SQL query executed successfully")
+            # print("SQL query executed successfully")
 
             row = stmt.fetchone()
             if row:
@@ -98,10 +130,10 @@ class Course_management():
 
     #Getting Teacher info based on course id
     def get_teacher(self):
-        stmt = self.conn.cursor
+        stmt = self.conn.cursor()
         try:
             course_id = int(input("Enter course id :"))
-            stmt.execute("select first_name,last_name,course_name from teacher inner join courses on courses.teacher_id=teacher.teacher_id where course_id=?"
+            stmt.execute('''select first_name,last_name,course_name from teacher inner join courses on courses.  teacher_id=teacher.teacher_id where course_id=?'''
                                 , (course_id))
             print(stmt.fetchall())
         except Exception as e:
