@@ -50,3 +50,19 @@ class Teacher_management():
         except Exception as e:
             raise TeacherNotFoundException("Erroe : Teacher not found".format(str(e)))   
         
+    def add_teacher(self):
+
+        teacher_id = int(input("Enter the teacher id:"))
+        first_name = input("Enter first name: ")
+        last_name = input("Enter last name: ")
+        email = input("Enter email: ")
+
+        if not teacher_id or not first_name or not last_name  or not email :
+            raise TeacherNotFoundException("Please fill properly.")
+        stmt = self.conn.cursor()
+        stmt.execute(
+            "INSERT INTO teacher (teacher_id,first_name, last_name, email) VALUES (?,?,?,?)",
+            (teacher_id,first_name, last_name, email))
+        self.conn.commit()
+        print("Teacher added successfully!")
+        
