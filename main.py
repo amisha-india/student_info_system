@@ -28,27 +28,30 @@ while True:
             if choice == '1':
                 while True:
                         print("\nStudent Operations:")
-                        print("1. Enroll in Course")
-                        print("2. Update Student Info")
-                        print("3. Make Payment")
-                        print("4. Display Student Info")
-                        print("5. Get Enrolled Courses")
-                        print("6. Get Payment History")
-                        print("7. Back to Main Menu")
-                        student_choice = input("Enter your choice (1-7): ")
+                        print("1. Add student")
+                        print("2. Enroll in Course")
+                        print("3. Update Student Info")
+                        print("4. Make Payment")
+                        print("5. Display Student Info")
+                        print("6. Get Enrolled Courses")
+                        print("7. Get Payment History")
+                        print("8. Back to Main Menu")
+                        student_choice = input("Enter your choice (1-8): ")
                         if student_choice == '1':
+                            student.add_student()
+                        if student_choice == '2':
                             student.enroll_in_course()
-                        elif student_choice == '2':
-                            student.update_student()
                         elif student_choice == '3':
-                            student.make_payment()
+                            student.update_student()
                         elif student_choice == '4':
-                            student.display_student_info()
+                            student.make_payment()
                         elif student_choice == '5':
-                            student.get_enrolled_courses()
+                            student.display_student_info()
                         elif student_choice == '6':
-                            student.get_payment_history()
+                            student.get_enrolled_courses()
                         elif student_choice == '7':
+                            student.get_payment_history()
+                        elif student_choice == '8':
                             break
                         else:
                             print("Invalid choice. Please try again.")
@@ -59,10 +62,11 @@ while True:
                     print("1. Assign Teacher")
                     print("2. Update Course Info")
                     print("3. Display Course Info")
-                    print("4. Get Enrollments")
-                    print("5. Get Teacher")
-                    print("6. Back to Main Menu")
-                    course_choice = input("Enter your choice (1-6): ")
+                    print("4. display course info by code")
+                    print("5. Get Enrollments")
+                    print("6. Get Teacher")
+                    print("7. Back to Main Menu")
+                    course_choice = input("Enter your choice (1-7): ")
                     if course_choice == '1':
                         course.assign_teacher()
                     elif course_choice == '2':
@@ -70,10 +74,12 @@ while True:
                     elif course_choice == '3':
                         course.display_course_info()
                     elif course_choice == '4':
-                        course.get_enrollments()
+                        course.display_course_info_by_code()
                     elif course_choice == '5':
-                        course.get_teacher()
+                        course.get_enrollments()
                     elif course_choice == '6':
+                        course.get_teacher()
+                    elif course_choice == '7':
                         break
                     else:
                         print("Invalid choice. Please try again.")
@@ -97,18 +103,21 @@ while True:
             elif choice == '4':
                 while True:
                     print("\nTeacher Operations:")
-                    print("1. Update Teacher Info")
-                    print("2. Display Teacher Info")
-                    print("3. Get Assigned Courses")
-                    print("4. Back to Main Menu")
-                    teacher_choice = input("Enter your choice (1-4): ")
+                    print("1. Add Teacher")
+                    print("2. Update Teacher Info")
+                    print("3. Display Teacher Info")
+                    print("4. Get Assigned Courses")
+                    print("5. Back to Main Menu")
+                    teacher_choice = input("Enter your choice (1-5): ")
                     if teacher_choice == '1':
+                        teacher.add_teacher()
+                    if teacher_choice == '2':
                         teacher.update_teacher()
-                    elif teacher_choice == '2':
-                        teacher.display_teacher_info()
                     elif teacher_choice == '3':
-                        teacher.get_assigned_courses()
+                        teacher.display_teacher_info()
                     elif teacher_choice == '4':
+                        teacher.get_assigned_courses()
+                    elif teacher_choice == '5':
                         break
                     else:
                         print("Invalid choice. Please try again.")
